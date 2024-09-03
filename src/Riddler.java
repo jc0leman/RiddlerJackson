@@ -138,14 +138,15 @@ public class Riddler {
         {
 
         }
-//        for(int i = 0; i < modify.length(); i++) {
-//
-//            modify.setCharAt(i, (char) (modify.charAt(i) - 9951));
-//
-//        }
-//
-//        decrypted = modify.toString();
-//        System.out.println(modify);
+        int dingbat = 0x2700;
+        int distance = dingbat - 'A';
+        for(int i = 0; i < modify.length(); i++) {
+
+            modify.setCharAt(i, (char) (modify.charAt(i) - distance));
+
+        }
+
+        decrypted = modify.toString();
         return decrypted;
     }
 }
