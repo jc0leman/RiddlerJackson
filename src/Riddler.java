@@ -71,13 +71,13 @@ public class Riddler {
         }
 
         for (int i = 0; i + 1 < modify.length(); i++) {
-            // Check if the character is '1' (indicating a triple-digit number)
+            // Check if the character is '1'
             if (modify.charAt(i) == 49) { // ASCII for '1'
                 // Calculate the tens and ones places for the triple-digit number
                 tens = ((modify.charAt(i + 1) - 48) * 10);
                 ones = (modify.charAt(i + 2) - 48);
 
-                // Replace the triple-digit number with the corresponding character
+                // Replace the triple-digit number with the character
                 modify.delete(i, i + 2);
                 modify.setCharAt(i, (char) (100 + tens + ones));
             } else {
@@ -85,7 +85,7 @@ public class Riddler {
                 tens = ((modify.charAt(i) - 48) * 10);
                 ones = (modify.charAt(i + 1) - 48);
 
-                // Replace the double-digit number with the corresponding character
+                // Replace the double-digit number with the character
                 modify.delete(i, i + 1);
                 modify.setCharAt(i, (char) (tens + ones));
             }
@@ -102,22 +102,21 @@ public class Riddler {
         StringBuilder modify = new StringBuilder(encrypted);
         StringBuilder cur = new StringBuilder();
 
-        // Remove the first character (a delimiter or unnecessary character)
+        // Remove the first character, its a zero that is unecessisary
         modify.delete(0, 1);
 
         // Process each set of 8 characters as a binary string representing a byte
         for (int j = 0; j < 161; j++) {
             for (int i = 0; i < 8; i++) {
-                // If the character is '1', add the corresponding bit value to the total
-                if (modify.charAt(i) == 49) { // ASCII for '1'
+                // If the character is 1, add the corresponding bit value to the total
+                if (modify.charAt(i) == 49) { // ASCII for 1
                     total += (1 << (7 - i));
                 }
             }
 
-            // Remove the processed 8 characters from the string
+            // Remove the  8 characters from the string
             modify.delete(0 , 8);
 
-            // Append the calculated character to the result
             cur.append((char) total);
 
             // Reset total for the next byte
@@ -139,7 +138,9 @@ public class Riddler {
 
         }
         int dingbat = 0x2700;
+        //find shift distance
         int distance = dingbat - 'A';
+        //do a really big caesar shift
         for(int i = 0; i < modify.length(); i++) {
 
             modify.setCharAt(i, (char) (modify.charAt(i) - distance));
