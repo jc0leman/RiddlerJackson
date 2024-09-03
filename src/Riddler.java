@@ -130,7 +130,7 @@ public class Riddler {
     }
 
 
-    public String decryptFour(String encrypted) {
+    public String decryptFour(String encrypted){
         String decrypted = "";
         StringBuilder modify = new StringBuilder(encrypted);
 
@@ -146,6 +146,6 @@ public class Riddler {
 //
 //        decrypted = modify.toString();
 //        System.out.println(modify);
-//        return decrypted;
-//    }
+        return decrypted;
+    }
 }
